@@ -30,6 +30,7 @@
 /* Anagram Game Application */
 
 package com.toy.anagrams.lib;
+import java.util.Random;
 
 /**
  * Implementation of the logic for the Anagram Game application.
@@ -132,6 +133,33 @@ final class StaticWordLibrary extends WordLibrary {
         "nuisngde",
         "rtdatioialn"
     };
+    
+    
+    public String[] shuffle(){
+    	int m = WORD_LIST.length;
+    	//String word[] = new String[m];
+    	for(int i=0; i<m; i++){
+    		String chars = WORD_LIST[i];
+    		Random rnd = new Random();
+    		StringBuffer buf = new StringBuffer();
+    		int n = chars.length();
+    		boolean hasChosen[] = new boolean[n];
+    		for(int j=0; j<n; j++){
+    			int val = rnd.nextInt(n);
+    			for(;;){
+    				if(!hasChosen[val]){
+    					buf.append(chars.charAt(val));
+    					hasChosen[val] = true;
+    					break;
+    				}
+       			 val = rnd.nextInt(n);
+    			}
+    				
+    		}
+    		WORD_LIST[i] = buf.toString();
+    	}
+    		return WORD_LIST;
+    }
     
     final static WordLibrary DEFAULT = new StaticWordLibrary();
 
