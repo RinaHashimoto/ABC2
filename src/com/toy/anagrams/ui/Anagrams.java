@@ -255,7 +255,26 @@ public class Anagrams extends JFrame {
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void nextTrialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTrialActionPerformed
-        wordIdx = (wordIdx + 1) % wordLibrary.getSize();
+String selectbox = (String)selectLevel.getSelectedItem();
+       
+        
+    	if(selectbox.equals("Level 1") ) {
+    		System.out.println("1");
+    		wordLibrary.shuffle();
+    	}
+    	else if(selectbox.equals("Level 2") ){
+    		System.out.println("2");
+    		wordLibrary.shuffle();
+    		wordLibrary.shuffle();
+    	} else {
+    		System.out.println("3");
+    		wordLibrary.shuffle();
+    		wordLibrary.shuffle();
+    		wordLibrary.shuffle();
+    	}
+        	
+    	
+    	wordIdx = (wordIdx + 1) % wordLibrary.getSize();
 
         feedbackLabel.setText(" ");
         scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx));
